@@ -15,10 +15,22 @@
       "Srmklive\\PayPal\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Srmklive\\PayPal\\Tests\\": "tests/"
+    }
+  },
   "require": {
     "guzzlehttp/guzzle": "~5.0|~6.0",
     "illuminate/support": "~5.0|~5.1|~5.2|~5.3|~5.4",
-    "nesbot/carbon": "~1.0"
+    "nesbot/carbon": "~1.0",
+    "php-http/mock-client": "^1",
+    "php-http/guzzle6-adapter": "^1.1.1",
+    "mockery/mockery": "^0.9",
+    "phpunit/phpunit": "~4.8|~5.7|~6.0"
+  },
+  "require-dev": {
+    "symfony/http-foundation": "^3"
   },
   "config": {
     "sort-packages": true
