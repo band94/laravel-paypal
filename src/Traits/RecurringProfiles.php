@@ -59,14 +59,18 @@ trait RecurringProfiles
      * @param float $amount
      * @param string $description
      * @param float $initAmount
-     * @param string $period (Day|Month|SemiMonth|Month|Year)
+     * @param Carbon $profileStartDate
      *
-     * @return array
+     * @return array*
      */
-    public function createMonthlySubscriptionWithInitAmount($token, $amount, $description, $initAmount)
+    public function createMonthlySubscriptionWithInitAmount($token, $amount, $description, $initAmount, $profileStartDate = null)
     {
+        if (is_null($profileStartDate)) {
+            $profileStartDate = Carbon::now();
+        }
+
         $data = [
-            'PROFILESTARTDATE'      => Carbon::now()->toAtomString(),
+            'PROFILESTARTDATE'      => $profileStartDate->toAtomString(),
             'DESC'                  => $description,
             'BILLINGPERIOD'         => 'Year',
             'BILLINGFREQUENCY'      => 1,
