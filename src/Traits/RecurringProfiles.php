@@ -72,7 +72,7 @@ trait RecurringProfiles
         $data = [
             'PROFILESTARTDATE'      => $profileStartDate->toAtomString(),
             'DESC'                  => $description,
-            'BILLINGPERIOD'         => 'Year',
+            'BILLINGPERIOD'         => 'Month',
             'BILLINGFREQUENCY'      => 1,
             'AMT'                   => $amount,
             'CURRENCYCODE'          => $this->currency,
