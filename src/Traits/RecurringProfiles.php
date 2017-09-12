@@ -51,4 +51,31 @@ trait RecurringProfiles
 
         return $this->createRecurringPaymentsProfile($data, $token);
     }
+
+    /**
+     * Create recurring subscription with init amount on monthly period basis.
+     *
+     * @param string $token
+     * @param float $amount
+     * @param string $description
+     * @param float $initAmount
+     * @param string $period (Day|Month|SemiMonth|Month|Year)
+     *
+     * @return array
+     */
+    public function createMonthlySubscriptionWithInitAmount($token, $amount, $description, $initAmount)
+    {
+        $data = [
+            'PROFILESTARTDATE'      => Carbon::now()->toAtomString(),
+            'DESC'                  => $description,
+            'BILLINGPERIOD'         => 'Year',
+            'BILLINGFREQUENCY'      => 1,
+            'AMT'                   => $amount,
+            'CURRENCYCODE'          => $this->currency,
+            'INITAMT'               => $initAmount,
+            'FAILEDINITAMTACTION'   => 'CancelOnFailure'
+        ];
+
+        return $this->createRecurringPaymentsProfile($data, $token);
+    }
 }
